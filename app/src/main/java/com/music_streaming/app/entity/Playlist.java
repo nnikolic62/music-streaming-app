@@ -1,5 +1,6 @@
 package com.music_streaming.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class Playlist {
             joinColumns = @JoinColumn(name = "playlist_id"),
             inverseJoinColumns = @JoinColumn(name = "song_id")
     )
+    @JsonManagedReference(value = "playlist-song")
     private List<Song> songs = new ArrayList<>();
 
     public Playlist() {

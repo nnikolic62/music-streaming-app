@@ -1,5 +1,6 @@
 package com.music_streaming.app.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
@@ -19,7 +20,7 @@ public class Album {
     @Column(name = "releaseYear")
     private int releaseYear;
     @OneToMany(mappedBy = "album")
-    @JsonManagedReference(value = "album-song")
+    @JsonBackReference(value = "album-song")
     private List<Song> songs = new ArrayList<>();
     @ManyToMany(mappedBy = "albums")
     private List<Artist> artists = new ArrayList<>();
